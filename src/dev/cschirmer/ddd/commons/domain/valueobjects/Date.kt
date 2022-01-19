@@ -24,7 +24,7 @@ data class Date(override var value: LocalDate) : ScalarValueObject<LocalDate>() 
 
     override fun toString(): String = value.format(DateTimeFormatter.ofPattern(DATE_PATTERN))
 
-    override fun isValid(fieldName: String?, notificationContext: NotificationContext?): Boolean = true
+    override suspend fun isValid(fieldName: String?, notificationContext: NotificationContext?): Boolean = true
 
     companion object {
         const val DATE_PATTERN = "yyyy-MM-dd"

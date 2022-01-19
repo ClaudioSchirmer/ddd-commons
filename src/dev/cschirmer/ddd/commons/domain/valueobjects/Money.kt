@@ -25,7 +25,7 @@ data class Money(
     }
 
     override fun toString() = value.toString()
-    override fun isValid(fieldName: String?, notificationContext: NotificationContext?) = true
+    override suspend fun isValid(fieldName: String?, notificationContext: NotificationContext?) = true
 
     fun toSymbolString() = "${currency.symbol} $value" // R$ - US$
     fun toCodeString() = "${currency.currencyCode} $value" // BRL - USD

@@ -35,7 +35,7 @@ open class DateTime(final override var value: ZonedDateTime) : ScalarValueObject
         value.withZoneSameInstant(ZoneId.of(BET_ZONE_ID))
             .format(DateTimeFormatter.ofPattern(pattern))
 
-    override fun isValid(fieldName: String?, notificationContext: NotificationContext?) = true
+    override suspend fun isValid(fieldName: String?, notificationContext: NotificationContext?) = true
 
     override fun equals(other: Any?) = other is DateTime && other.value == this.value
 

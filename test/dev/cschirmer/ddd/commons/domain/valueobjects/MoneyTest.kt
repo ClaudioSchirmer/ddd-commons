@@ -1,5 +1,6 @@
 package dev.cschirmer.ddd.commons.domain.valueobjects
 
+import kotlinx.coroutines.runBlocking
 import kotlin.test.*
 import org.junit.Test
 import java.math.BigDecimal
@@ -9,7 +10,7 @@ import java.util.*
 internal class MoneyTest {
 
     @Test
-    fun `Validate reais`() {
+    fun `Validate reais`() = runBlocking{
         listOf("1.99", "5.00", "100.00", "1400.25", "10765.34", "100654.20", "2100342.99", "765433454321987.85")
             .forEach {
                 val defaultMoney = Money(it.toBigDecimal())

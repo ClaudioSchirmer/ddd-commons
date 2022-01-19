@@ -7,7 +7,7 @@ import dev.cschirmer.ddd.kernel.domain.valueobjects.ScalarValueObject
 data class Email (
 	override var value: String
 ) : ScalarValueObject<String>() {
-	override fun isValid(fieldName: String?, notificationContext: NotificationContext?): Boolean  {
+	override suspend fun isValid(fieldName: String?, notificationContext: NotificationContext?): Boolean  {
 		val pattern = "^[a-z0-9.]+@[a-z0-9]+\\.[a-z]+(\\.[a-z]+)?\$".toRegex(RegexOption.IGNORE_CASE)
 		return if (pattern.matches(value)) {
 			true
