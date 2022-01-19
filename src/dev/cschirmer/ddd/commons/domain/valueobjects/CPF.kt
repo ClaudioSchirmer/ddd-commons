@@ -18,7 +18,7 @@ data class CPF(
         value = value.onlyDigits()
     }
 
-    override fun isValid(fieldName: String?, notificationContext: NotificationContext?): Boolean = if (!isValid()) {
+    override suspend fun isValid(fieldName: String?, notificationContext: NotificationContext?): Boolean = if (!isValid()) {
         notificationContext?.addNotification(
             NotificationMessage(
                 fieldName = fieldName,

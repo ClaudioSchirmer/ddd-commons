@@ -14,14 +14,13 @@ data class Password(
         fun fromEncryptedLocation(value: String): Password = Password(value).apply { isEncrypted = true }
     }
 
-    val hashValue: String
-        get() = when {
-            isEncrypted -> value
-            isValid() -> value
-            else -> ""
-        }
+    suspend fun getHashValue() = when {
+        isEncrypted -> value
+        isValid() -> value
+        else -> ""
+    }
 
-    override fun isValid(fieldName: String?, notificationContext: NotificationContext?): Boolean {
+    override suspend fun isValid(fieldName: String?, notificationContext: NotificationContext?): Boolean {
         if (isEncrypted) {
             return true
         }

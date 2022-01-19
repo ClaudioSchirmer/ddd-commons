@@ -2,6 +2,7 @@ package dev.cschirmer.ddd.commons.domain.valueobjects
 
 
 import dev.cschirmer.ddd.commons.domain.valueobjects.DateTime.Companion.DEFAULT_ZONE_ID
+import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import java.time.ZoneId
 import java.time.ZonedDateTime
@@ -26,7 +27,7 @@ internal class DateTimeTest {
     }
 
     @Test
-    fun `Validate other DateTime functions`() {
+    fun `Validate other DateTime functions`() = runBlocking {
         val dateTime = DateTime(zonedDateTime)
         assertEquals("2021-12-01T12:05:45.999Z", dateTime.toDateTimeString())
         assertEquals("2021-12-01", dateTime.toDateString())
@@ -37,7 +38,7 @@ internal class DateTimeTest {
     }
 
     @Test
-    fun `Validate LocalDateTime`() {
+    fun `Validate LocalDateTime`() = runBlocking {
         val dateTime = DateTime.fromLocalDateTimeUTC(zonedDateTime.toLocalDateTime())
         assertEquals("2021-12-01T12:05:45.999Z", dateTime.toDateTimeString())
         assertEquals("2021-12-01", dateTime.toDateString())

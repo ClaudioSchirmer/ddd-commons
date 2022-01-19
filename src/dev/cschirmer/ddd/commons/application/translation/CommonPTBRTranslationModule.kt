@@ -1,6 +1,6 @@
 package dev.cschirmer.ddd.commons.application.translation
 
-import dev.cschirmer.ddd.kernel.application.config.Language
+import dev.cschirmer.ddd.kernel.application.configuration.Language
 import dev.cschirmer.ddd.kernel.application.translation.TranslateModule
 
 object CommonPTBRTranslationModule : TranslateModule {
