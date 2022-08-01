@@ -10,7 +10,7 @@ val utilsKotlin: String by project
 
 plugins {
 	application
-	kotlin("jvm") version "1.6.0"
+	kotlin("jvm") version "1.7.0"
 	java
 	`maven-publish`
 }
@@ -38,8 +38,8 @@ java {
 	withSourcesJar()
 }
 
-group = "dev.cschirmer"
-version = "2.0.0"
+group = "br.dev.schirmer"
+version = "1.0.0"
 
 sourceSets.main {
 	withConvention(KotlinSourceSet::class) {
@@ -68,10 +68,10 @@ repositories {
 
 dependencies {
 	//Kotlin-Utils
-	implementation("dev.cschirmer:utils-kotlin:$utilsKotlin")
+	implementation("br.dev.schirmer:utils-kotlin:$utilsKotlin")
 
 	//ddd-kernel
-	implementation("dev.cschirmer:ddd-kernel:$dddKernel")
+	implementation("br.dev.schirmer:ddd-kernel:$dddKernel")
 
 	//Tests
 	testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlinVersion")
