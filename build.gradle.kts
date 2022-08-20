@@ -10,7 +10,7 @@ val utilsKotlin: String by project
 
 plugins {
 	application
-	kotlin("jvm") version "1.7.0"
+	kotlin("jvm") version "1.7.10"
 	java
 	`maven-publish`
 }
@@ -39,17 +39,17 @@ java {
 }
 
 group = "br.dev.schirmer"
-version = "1.0.0"
+version = "1.1.0"
 
 sourceSets.main {
-	withConvention(KotlinSourceSet::class) {
-		kotlin.srcDirs("src")
+	java {
+		srcDirs("src")
 	}
 }
 
 sourceSets.test {
-	withConvention(KotlinSourceSet::class) {
-		kotlin.srcDirs("test")
+	java {
+		srcDirs("test")
 	}
 }
 
