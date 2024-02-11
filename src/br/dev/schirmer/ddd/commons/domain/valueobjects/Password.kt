@@ -1,6 +1,6 @@
 package br.dev.schirmer.ddd.commons.domain.valueobjects
 
-import br.dev.schirmer.utils.kotlin.security.encryptHash
+import br.dev.schirmer.utils.kotlin.security.string.encryptHash
 import br.dev.schirmer.ddd.kernel.domain.notifications.NotificationContext
 import br.dev.schirmer.ddd.kernel.domain.notifications.NotificationMessage
 import br.dev.schirmer.ddd.kernel.domain.valueobjects.ScalarValueObject
