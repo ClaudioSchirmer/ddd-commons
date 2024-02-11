@@ -1,6 +1,6 @@
 package br.dev.schirmer.ddd.commons.domain.valueobjects
 
-import br.dev.schirmer.utils.kotlin.extensions.onlyDigits
+import br.dev.schirmer.utils.kotlin.string.onlyDigits
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 import kotlin.test.assertEquals
