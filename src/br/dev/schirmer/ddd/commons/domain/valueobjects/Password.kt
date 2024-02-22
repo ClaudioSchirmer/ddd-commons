@@ -3,11 +3,11 @@ package br.dev.schirmer.ddd.commons.domain.valueobjects
 import br.dev.schirmer.utils.kotlin.security.string.encryptHash
 import br.dev.schirmer.ddd.kernel.domain.notifications.NotificationContext
 import br.dev.schirmer.ddd.kernel.domain.notifications.NotificationMessage
-import br.dev.schirmer.ddd.kernel.domain.valueobjects.ScalarValueObject
+import br.dev.schirmer.ddd.kernel.domain.valueobjects.ValueObject
 
-data class Password(
+class Password(
     override var value: String
-) : ScalarValueObject<String>() {
+) : ValueObject<String> {
     private var isEncrypted = false
 
     companion object {

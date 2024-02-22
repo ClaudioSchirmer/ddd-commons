@@ -2,20 +2,19 @@ package br.dev.schirmer.ddd.commons.domain.valueobjects
 
 import br.dev.schirmer.ddd.kernel.domain.notifications.NotificationContext
 import br.dev.schirmer.ddd.kernel.domain.notifications.NotificationMessage
-import br.dev.schirmer.ddd.kernel.domain.valueobjects.ScalarValueObject
+import br.dev.schirmer.ddd.kernel.domain.valueobjects.ValueObject
 import br.dev.schirmer.utils.kotlin.string.onlyDigits
 
-data class CNPJ(
-	override var value: String
-) : ScalarValueObject<String>() {
+@JvmInline
+value class CNPJ(
+	override val value: String
+) : ValueObject<String> {
 
-	val maskedValue get() = with(value) {
+	val maskedValue get() = with(value.onlyDigits<String>()) {
 		"${take(2)}.${substring(2,5)}.${substring(5,8)}/${substring(8,12)}-${drop(12)}"
 	}
 
-	init {
-		value = value.onlyDigits()
-	}
+	val unmaskedValue get() = value.onlyDigits<String>()
 
 	override suspend fun isValid(fieldName: String?, notificationContext: NotificationContext?): Boolean  = if (!isValid()) {
 		notificationContext?.addNotification(NotificationMessage(fieldName = fieldName, notification = InvalidCNPJDomainNotification()))
@@ -25,7 +24,7 @@ data class CNPJ(
 	}
 
 	private fun isValid(): Boolean {
-		with(value) {
+		with(unmaskedValue) {
 
 			if (length != 14) {
 				return false

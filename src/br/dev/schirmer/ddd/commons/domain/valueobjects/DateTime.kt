@@ -1,13 +1,13 @@
 package br.dev.schirmer.ddd.commons.domain.valueobjects
 
 import br.dev.schirmer.ddd.kernel.domain.notifications.NotificationContext
-import br.dev.schirmer.ddd.kernel.domain.valueobjects.ScalarValueObject
+import br.dev.schirmer.ddd.kernel.domain.valueobjects.ValueObject
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
-open class DateTime(final override var value: ZonedDateTime) : ScalarValueObject<ZonedDateTime>() {
+open class DateTime(final override var value: ZonedDateTime) : ValueObject<ZonedDateTime> {
 
     constructor(zonedDateTimeString: String, pattern: String = RFC_3339_PATTERN) : this(
         ZonedDateTime.parse(zonedDateTimeString, DateTimeFormatter.ofPattern(pattern))

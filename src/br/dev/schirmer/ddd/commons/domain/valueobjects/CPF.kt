@@ -2,21 +2,20 @@ package br.dev.schirmer.ddd.commons.domain.valueobjects
 
 import br.dev.schirmer.ddd.kernel.domain.notifications.NotificationContext
 import br.dev.schirmer.ddd.kernel.domain.notifications.NotificationMessage
-import br.dev.schirmer.ddd.kernel.domain.valueobjects.ScalarValueObject
+import br.dev.schirmer.ddd.kernel.domain.valueobjects.ValueObject
 import br.dev.schirmer.utils.kotlin.string.onlyDigits
 
-data class CPF(
-    override var value: String
-) : ScalarValueObject<String>() {
+@JvmInline
+value class CPF(
+    override val value: String
+) : ValueObject<String> {
 
     val maskedValue
-        get() = with(value) {
+        get() = with(value.onlyDigits<String>()) {
             "${take(3)}.${substring(3, 6)}.${substring(6, 9)}-${drop(9)}"
         }
 
-    init {
-        value = value.onlyDigits()
-    }
+    val unmaskedValue get() = value.onlyDigits<String>()
 
     override suspend fun isValid(fieldName: String?, notificationContext: NotificationContext?): Boolean = if (!isValid()) {
         notificationContext?.addNotification(
@@ -31,7 +30,7 @@ data class CPF(
     }
 
     private fun isValid(): Boolean {
-        with(value) {
+        with(unmaskedValue) {
 
             if (length != 11) {
                 return false

@@ -1,11 +1,12 @@
 package br.dev.schirmer.ddd.commons.domain.valueobjects
 
 import br.dev.schirmer.ddd.kernel.domain.notifications.NotificationContext
-import br.dev.schirmer.ddd.kernel.domain.valueobjects.ScalarValueObject
+import br.dev.schirmer.ddd.kernel.domain.valueobjects.ValueObject
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
-data class Date(override var value: LocalDate) : ScalarValueObject<LocalDate>() {
+@JvmInline
+value class Date(override val value: LocalDate) : ValueObject<LocalDate> {
 
     constructor(localDateString: String, pattern: String = DATE_PATTERN) : this(
         LocalDate.parse(

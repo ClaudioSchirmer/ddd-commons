@@ -13,7 +13,7 @@ class CPFTest {
     fun validCPF() = runBlocking {
         listOf("888.772.910-79", "718.006.690-70", "801.460.340-07", "93540160060", "14472903059").forEach {
             assertTrue(CPF(it).isValid(), "CPF deveria ser válido.")
-            assertEquals(it.onlyDigits(), CPF(it).value, "CPF deveria manter o valor sem máscaras")
+            assertEquals(it.onlyDigits(), CPF(it).unmaskedValue, "CPF deveria manter o valor sem máscaras")
         }
     }
 
