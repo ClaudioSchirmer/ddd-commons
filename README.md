@@ -2,7 +2,8 @@
 ddd-commons is a Kotlin library to quickly create objects of value
 
 >Package: **br.dev.schirmer.ddd.commons**<br/>
->Developer: **Claudio Schirmer Guedes**
+>Developer: **Claudio Schirmer Guedes**<br/>
+>Version: **1.4.0**
 
 ## Value objects
 
