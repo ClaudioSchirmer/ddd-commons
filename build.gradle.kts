@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 
 val repositoryURL: String by project
 val repositoryUser: String by project
@@ -57,8 +56,7 @@ repositories {
 	mavenCentral()
 
 	maven {
-		url = uri("$repositoryURL/repository/maven-releases/")
-		isAllowInsecureProtocol = true
+		url = uri(repositoryURL)
 		credentials {
 			username = repositoryUser
 			password = repositoryPassword
@@ -108,15 +106,14 @@ publishing {
 			}
 		}
 	}
-
 	repositories {
 		maven {
-			name = "nexus"
-			url = uri("$repositoryURL/repository/maven-releases/")
+			name = "GitHub"
+			url = uri("https://maven.pkg.github.com/ClaudioSchirmer/packages")
 			isAllowInsecureProtocol = true
 			credentials {
-				username = repositoryUser
-				password = repositoryPassword
+				username = System.getenv("MAVEN_USERNAME")
+				password = System.getenv("MAVEN_PASSWORD")
 			}
 		}
 	}
