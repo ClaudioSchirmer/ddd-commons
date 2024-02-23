@@ -110,7 +110,6 @@ publishing {
 		maven {
 			name = "GitHub"
 			url = uri("https://maven.pkg.github.com/ClaudioSchirmer/packages")
-			isAllowInsecureProtocol = true
 			credentials {
 				username = System.getenv("MAVEN_USERNAME")
 				password = System.getenv("MAVEN_PASSWORD")
